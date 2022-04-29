@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "flamingo",
-    "slug": "flamingo",
+    "name": "flamingo Express",
+    "slug": "flamingoExpress",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,17 +13,18 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "permissions": [],
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.splashdev.flamingoexpress"
     },
     "web": {
       "favicon": "./assets/favicon.png"
