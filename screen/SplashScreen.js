@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { scale } from "react-native-size-matters";
 import { useNavigation } from "@react-navigation/native";
+import Button from "../components/Button";
 
 export const SplashScreen = ({}) => {
   const { navigate } = useNavigation();
@@ -45,30 +46,18 @@ export const SplashScreen = ({}) => {
       </Text>
 
       <View style={{ width: "80%", marginTop: 40 }}>
-        <TouchableOpacity
-          onPress={() => {
-            navigate("signup");
-          }}
-          activeOpacity={0.7}
-          style={{
-            backgroundColor: "#000",
-            width: "100%",
-            borderRadius: 10,
-            fontFamily: "bold",
-          }}
-        >
+        <Button onPress={() => navigate("signup")}>
           <Text
             style={{
               color: "#fff",
               textAlign: "center",
-              marginVertical: 15,
               fontSize: scale(12),
               fontFamily: "bold",
             }}
           >
             Sign Up
           </Text>
-        </TouchableOpacity>
+        </Button>
 
         <View
           style={{

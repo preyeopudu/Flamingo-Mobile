@@ -59,6 +59,7 @@ export default function App() {
       <AuthContext.Provider
         value={{ auth, setAuth, user, setUser, notification, setNotification }}
       >
+        <StatusBar />
         <NavigationContainer>
           {auth != false ? <MainTab /> : <RootStackScreen />}
           <StatusBar translucent={true} />

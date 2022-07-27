@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scale } from "react-native-size-matters";
@@ -13,7 +13,8 @@ const StackNav = ({ title }) => {
         justifyContent: "space-between",
         width: "100%",
         paddingHorizontal: 20,
-        marginTop: 40,
+        marginTop: StatusBar.currentHeight + 20,
+        marginBottom: 20,
       }}
     >
       <TouchableOpacity

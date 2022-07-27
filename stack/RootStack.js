@@ -21,7 +21,7 @@ export const RootStackScreen = ({ navigation }) => (
     />
     <RootStack.Screen
       options={{ headerShown: false }}
-      name="ResetScreen"
+      name="reset"
       component={ResetScreen}
     />
     <RootStack.Screen
