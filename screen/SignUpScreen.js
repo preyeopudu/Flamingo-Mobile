@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TextInput,
-  StatusBar,
-  Platform,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, Text, Alert, ScrollView } from "react-native";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Loading } from "../components/Loading";
@@ -18,6 +9,7 @@ import { getNotification } from "../Api/user-api";
 import StackNav from "../components/StackNav";
 import Input from "../components/Input";
 import Heading from "../components/Heading";
+import Button from "../components/Button";
 export const SignUpScreen = ({ navigation }) => {
   const [stage, setStage] = useState(0);
   const [data, setData] = useState();
@@ -107,15 +99,37 @@ export const SignUpScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StackNav title="Sign Up" />
+      <View style={{ width: "90%", marginBottom: 30 }}>
+        <Heading
+          heading="Sign Up"
+          subheading="Create an account,to make your money work."
+        />
+      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{
+          width: "100%",
+          alignSelf: "center",
+        }}
+        contentContainerStyle={{
+          alignItems: "center",
+        }}
+      >
+        <View style={{ width: "90%", marginVertical: 10 }}>
+          <Input title="Username" placeholder="xxxxyyy" />
+          <Input title="Email" placeholder="x@y.com" />
+          <Input title="Refree" placeholder="y@z.com (optional)" />
+          <Input title="Password" placeholder="********" />
 
-      <View style={{ width: "90%", marginVertical: 30 }}>
-        <Heading />
-      </View>
-      <View style={{ width: "90%", marginTop: 10 }}>
-        <Input title="Username" placeholder="xxxxyyy" />
-        <Input title="Email" placeholder="x@y.com" />
-        <Input title="Password" placeholder="********" />
-      </View>
+          <Button>
+            <Text
+              style={{ color: "#fff", textAlign: "center", fontFamily: "bold" }}
+            >
+              Submit
+            </Text>
+          </Button>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -125,7 +139,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    PaddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 40,
   },
   inputContainer: {
     paddingHorizontal: 20,
