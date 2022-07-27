@@ -8,15 +8,20 @@ import {
   StatusBar,
   Platform,
   Alert,
+  ScrollView,
 } from "react-native";
-import { Feather, FontAwesome } from "@expo/vector-icons";
 import { Loading } from "../components/Loading";
 import { AuthContext } from "../components/context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { signIn } from "../Api/auth-api";
 import { getNotification } from "../Api/user-api";
+import StackNav from "../components/StackNav";
+import Input from "../components/Input";
+import Heading from "../components/Heading";
+import Button from "../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 export const SignInScreen = ({ navigation }) => {
+  const { navigate } = useNavigation();
   const [data, setData] = useState();
   const [show, SetShow] = useState(true);
   const [loading, setLoading] = useState();
@@ -66,94 +71,55 @@ export const SignInScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <View style={styles.action}>
-          <Feather name="mail" size={20} color="black" />
-          <TextInput
-            placeholder="Email"
-            placeholderTextColor="black"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => HandleEmail(val)}
-          />
-        </View>
+      <StackNav title="Sign In" />
 
-        <View style={[styles.action, { marginTop: 40, marginBottom: 30 }]}>
-          <Feather name="lock" size={20} color="black" />
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="black"
-            secureTextEntry={show}
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => HandlePassword(val)}
-          />
-          <TouchableOpacity activeOpacity={0.5} onPress={() => showPassword()}>
-            {show ? (
-              <Feather name="eye-off" color="black" size={20} />
-            ) : (
-              <Feather name="eye" color="black" size={20} />
-            )}
-          </TouchableOpacity>
-        </View>
+      <View style={{ width: "90%", marginBottom: 50, marginTop: 20 }}>
+        <Heading
+          heading="Welcome Back!"
+          subheading="Sign in to your account."
+        />
+      </View>
 
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <TouchableOpacity
-            style={{ marginTop: 0 }}
-            onPress={() => {
-              HandleSignIn();
-            }}
+      <ScrollView style={{ width: "90%" }}>
+        <Input title="Email" placeholder="x@y.com" />
+        <Input title="Password" placeholder="*******" />
+        <Button>
+          <Text
+            style={{ color: "#fff", textAlign: "center", fontFamily: "bold" }}
           >
-            <View
-              style={{
-                borderRadius: 12,
-                width: "100%",
-                backgroundColor: "black",
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 18,
-                  paddingHorizontal: 120,
-                  paddingVertical: 10,
-                  fontWeight: "900",
-                  width: "100%",
-                }}
-              >
-                Login
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+            Submit
+          </Text>
+        </Button>
 
-        <View style={{ alignItems: "center", marginTop: 20 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            justifyContent: "flex-end",
+            marginTop: 20,
+          }}
+        >
+          <Text style={{ fontFamily: "medium", color: "grey" }}>
+            Forgot Password?
+          </Text>
           <TouchableOpacity
-            style={{
-              borderColor: "black",
-              borderRadius: 12,
-              borderWidth: 1.5,
-              marginTop: 0,
-            }}
             onPress={() => {
-              navigation.goBack();
+              navigate("reset");
             }}
           >
             <Text
               style={{
-                color: "black",
-                fontSize: 18,
-                paddingHorizontal: 120,
-                paddingVertical: 10,
-                fontWeight: "900",
-                width: "100%",
+                fontFamily: "bold",
+                marginLeft: 5,
+                textDecorationLine: "underline",
               }}
             >
-              Back
+              Reset
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -163,7 +129,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   inputContainer: {
     paddingHorizontal: 20,
