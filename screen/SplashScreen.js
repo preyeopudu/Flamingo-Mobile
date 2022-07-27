@@ -1,67 +1,133 @@
-import React from 'react';
-import { StyleSheet, Text, View,Image,Platform,TouchableOpacity,StatusBar } from 'react-native';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Platform,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
+import { scale } from "react-native-size-matters";
+import { useNavigation } from "@react-navigation/native";
 
-export  const SplashScreen=({navigation})=>{
+export const SplashScreen = ({}) => {
+  const { navigate } = useNavigation();
   return (
     <View style={styles.container}>
-     <Text style={{fontSize:35,color:'black'}}>Flamingo Express</Text>
+      <Image
+        source={require("../assets/icon.png")}
+        style={{ height: 220, width: 220 }}
+      />
+      <Text
+        style={{
+          fontSize: 33,
+          color: "black",
+          fontFamily: "bold",
+          width: "60%",
+          textAlign: "center",
+        }}
+      >
+        Get Your Money Under Control.
+      </Text>
 
-      <View style={styles.buttonContainer}>
+      <Text
+        style={{
+          fontSize: 18,
+          textAlign: "center",
+          color: "grey",
+          fontFamily: "bold",
+          width: "80%",
+          marginVertical: 15,
+        }}
+      >
+        Start Small And Then Build Up ...
+      </Text>
 
-      <View style={{width:"50%"}}>
-        <TouchableOpacity onPress={()=>{navigation.navigate('SignInScreen')}}>
-            <View style={[styles.button,{borderTopLeftRadius:10,borderBottomLeftRadius:10}]}>
-            <Text style={styles.buttonText}>Login</Text>
-            </View>
-         </TouchableOpacity>
-      </View>
-        
-      
-
-      <View style={{width:"50%"}}>
-      <TouchableOpacity onPress={()=>{navigation.navigate('SignUpScreen')}}>
-        <View style={[styles.button,{borderBottomRightRadius:10,borderTopRightRadius:10}]}>
-          <Text style={styles.buttonText}>Register</Text>
-          </View>
+      <View style={{ width: "80%", marginTop: 40 }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigate("signup");
+          }}
+          activeOpacity={0.7}
+          style={{
+            backgroundColor: "#000",
+            width: "100%",
+            borderRadius: 10,
+            fontFamily: "bold",
+          }}
+        >
+          <Text
+            style={{
+              color: "#fff",
+              textAlign: "center",
+              marginVertical: 15,
+              fontSize: scale(12),
+              fontFamily: "bold",
+            }}
+          >
+            Sign Up
+          </Text>
         </TouchableOpacity>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            top: 30,
+          }}
+        >
+          <Text style={{ fontFamily: "medium", color: "grey" }}>
+            Already have an account?
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigate("signin");
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: "bold",
+                marginLeft: 5,
+                textDecorationLine: "underline",
+              }}
+            >
+              Sign In
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-        
-      
-
-
-    </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent:'center',
-    marginTop:Platform.OS === 'android' ? StatusBar.currentHeight : 0
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  buttonContainer:{
-    flexDirection:'row',
-    width:'75%',
-    justifyContent:'center',
-    marginTop:30
+  buttonContainer: {
+    flexDirection: "row",
+    width: "75%",
+    justifyContent: "center",
+    marginTop: 30,
   },
-  button:{
-    
-    backgroundColor:"white",
-    elevation:20,
-    alignItems:'center',
-    shadowColor:'black',
-    shadowOffset:{width:0,height:2},
-    shadowRadius:6,
-    shadowOpacity:0.26,
-    color:'black'
+  button: {
+    backgroundColor: "white",
+    elevation: 20,
+    alignItems: "center",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
+    color: "black",
   },
-  buttonText:{
-    fontSize:25,
-    color:'black',
-    padding:10
-  }
+  buttonText: {
+    fontSize: 25,
+    color: "black",
+    padding: 10,
+  },
 });
