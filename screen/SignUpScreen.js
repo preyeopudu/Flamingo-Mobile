@@ -16,6 +16,8 @@ import { AuthContext } from "../components/context";
 import { signUp } from "../Api/auth-api";
 import { getNotification } from "../Api/user-api";
 import StackNav from "../components/StackNav";
+import Input from "../components/Input";
+import Heading from "../components/Heading";
 export const SignUpScreen = ({ navigation }) => {
   const [stage, setStage] = useState(0);
   const [data, setData] = useState();
@@ -105,118 +107,14 @@ export const SignUpScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StackNav title="Sign Up" />
-      <View style={styles.inputContainer}>
-        <View style={styles.action}>
-          <FontAwesome name="user-o" size={20} color="black" />
-          <TextInput
-            placeholder="First Name"
-            placeholderTextColor="black"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => {
-              HandleName(val);
-            }}
-          />
-        </View>
 
-        <View style={styles.action}>
-          <Feather name="mail" size={20} color="black" />
-          <TextInput
-            placeholder="Valid Email"
-            placeholderTextColor="black"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => {
-              HandleEmail(val);
-            }}
-          />
-        </View>
-
-        <View style={styles.action}>
-          <Feather name="lock" size={20} color="black" />
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="black"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => {
-              HandlePassword(val);
-            }}
-            secureTextEntry={true}
-          />
-        </View>
-
-        <View style={styles.action}>
-          <FontAwesome name="users" size={20} color="black" />
-          <TextInput
-            placeholder="Referal (optional)"
-            placeholderTextColor="black"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => {
-              HandleReferer(val);
-            }}
-          />
-        </View>
-
-        <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
-          <TouchableOpacity
-            style={{
-              borderColor: "black",
-              borderRadius: 12,
-              borderWidth: 1.5,
-              marginTop: 0,
-              width: "100%",
-              backgroundColor: "black",
-            }}
-            onPress={() => {
-              HandleSignUp();
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-                fontSize: 18,
-                paddingHorizontal: 120,
-                paddingVertical: 10,
-                fontWeight: "900",
-                width: "100%",
-                textAlign: "center",
-              }}
-            >
-              Register
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
-          <TouchableOpacity
-            style={{
-              borderColor: "black",
-              borderRadius: 12,
-              borderWidth: 1.5,
-              marginTop: 0,
-              width: "100%",
-            }}
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <Text
-              style={{
-                color: "black",
-                fontSize: 18,
-                paddingHorizontal: 120,
-                paddingVertical: 10,
-                fontWeight: "900",
-                width: "100%",
-                textAlign: "center",
-              }}
-            >
-              Back
-            </Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{ width: "90%", marginVertical: 30 }}>
+        <Heading />
+      </View>
+      <View style={{ width: "90%", marginTop: 10 }}>
+        <Input title="Username" placeholder="xxxxyyy" />
+        <Input title="Email" placeholder="x@y.com" />
+        <Input title="Password" placeholder="********" />
       </View>
     </View>
   );
@@ -227,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 40,
+    PaddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 40,
   },
   inputContainer: {
     paddingHorizontal: 20,
