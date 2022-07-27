@@ -15,6 +15,7 @@ import { Loading } from "../components/Loading";
 import { AuthContext } from "../components/context";
 import { signUp } from "../Api/auth-api";
 import { getNotification } from "../Api/user-api";
+import StackNav from "../components/StackNav";
 export const SignUpScreen = ({ navigation }) => {
   const [stage, setStage] = useState(0);
   const [data, setData] = useState();
@@ -103,6 +104,7 @@ export const SignUpScreen = ({ navigation }) => {
   }
   return (
     <View style={styles.container}>
+      <StackNav title="Sign Up" />
       <View style={styles.inputContainer}>
         <View style={styles.action}>
           <FontAwesome name="user-o" size={20} color="black" />
