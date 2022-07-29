@@ -83,7 +83,7 @@ export const SignInScreen = ({ navigation }) => {
       <ScrollView style={{ width: "90%" }}>
         <Input title="Email" placeholder="x@y.com" />
         <Input title="Password" placeholder="*******" />
-        <Button>
+        <Button onPress={() => setAuth(true)}>
           <Text
             style={{ color: "#fff", textAlign: "center", fontFamily: "bold" }}
           >

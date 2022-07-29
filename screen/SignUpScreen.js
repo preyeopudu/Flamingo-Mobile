@@ -102,7 +102,7 @@ export const SignUpScreen = ({ navigation }) => {
       <View style={{ width: "90%", marginBottom: 30 }}>
         <Heading
           heading="Sign Up"
-          subheading="Create an account,to make your money work."
+          subheading="Create an account, make your money work."
         />
       </View>
       <ScrollView

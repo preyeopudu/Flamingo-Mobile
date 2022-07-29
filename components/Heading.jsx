@@ -4,7 +4,7 @@ const Heading = ({ heading, subheading }) => {
   return (
     <View>
       <Text style={{ fontFamily: "bold", fontSize: 30 }}>{heading}</Text>
-      <Text style={{ fontFamily: "medium", fontSize: 20, marginTop: 10 }}>
+      <Text style={{ fontFamily: "medium", fontSize: 18, marginTop: 10 }}>
         {subheading}
       </Text>
     </View>
