@@ -27,6 +27,8 @@ import { Invest } from "../components/Invest";
 import { AuthContext } from "../components/context";
 import { addPlan } from "../Api/plan-api";
 import Top from "../components/Top";
+import Wallet from "../components/Wallet";
+import ActionSection from "../sections/ActionSection";
 
 export const HomeScreen = ({ navigation }) => {
   let bell = <MaterialCommunityIcons name="bell" size={35} color="grey" />;
@@ -87,7 +89,17 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Top />
+      <View style={{}}>
+        <Top />
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Wallet />
+      </View>
+
+      <View>
+        <ActionSection />
+      </View>
     </View>
   );
 };

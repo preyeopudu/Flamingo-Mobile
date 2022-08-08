@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Views, Text } from "react-native";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import {
   Ionicons,
@@ -9,6 +8,9 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
 
 import { HomeScreen } from "../screen/HomeScreen";
 import { TransactionScreen } from "../screen/TransactionScreen";
@@ -20,29 +22,36 @@ import { ForexScreen } from "../screen/ForexScreen";
 const HomeStack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const TransferStack = createStackNavigator();
-const Tab = createMaterialBottomTabNavigator();
 const Top = createMaterialTopTabNavigator();
 
-export const MainTab = ({}) => {
+export const MainTab = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      activeColor="black"
-      inactiveColor="gray"
-      screenOptions={{ tabBarColor: "black" }}
-      barStyle={{ backgroundColor: "#ffff" }}
+      screenOptions={{
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "grey",
+        headerShown: false,
+        tabBarShowLabel: false,
+        drawerType: "back",
+        tabBarStyle: {
+          position: "absolute",
+          left: 20,
+          right: 20,
+          elevation: 10,
+          backgroundColor: "#fff",
+          height: 70,
+          alignSelf: "center",
+          paddingHorizontal: 15,
+          marginBottom: 20,
+          borderRadius: 20,
+          paddingVertical: 10,
+          backgroundColor: "black",
+          height: 80,
+        },
+      }}
     >
-      <Tab.Screen
-        name="Home"
-        component={HomeStackScreen}
-        options={{
-          tabBarLabel: "Home",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-          ),
-        }}
-      />
-
       <Tab.Screen
         name="Details"
         component={ReferalScreen}
@@ -54,6 +63,17 @@ export const MainTab = ({}) => {
               size={26}
               color={color}
             />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Home"
+        component={HomeStackScreen}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
         }}
       />
