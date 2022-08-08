@@ -29,6 +29,7 @@ import { addPlan } from "../Api/plan-api";
 import Top from "../components/Top";
 import Wallet from "../components/Wallet";
 import ActionSection from "../sections/ActionSection";
+import Divider from "../components/Divider";
 
 export const HomeScreen = ({ navigation }) => {
   let bell = <MaterialCommunityIcons name="bell" size={35} color="grey" />;
@@ -99,6 +100,10 @@ export const HomeScreen = ({ navigation }) => {
 
       <View>
         <ActionSection />
+      </View>
+
+      <View style={{ width: "90%", alignSelf: "center" }}>
+        <Divider />
       </View>
     </View>
   );
